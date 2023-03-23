@@ -1,0 +1,151 @@
+:root {
+  --txt-primary: #535353;
+  --txt-hover: #292929;
+  --background: #F7F7F7;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--txt-primary);
+  background-color: var(--background);
+  margin: 0;
+}
+.shadow {
+  display: grid;
+  margin: auto 0;
+    position: relative;
+  place-items: center;
+  background: #15202B;
+}
+
+.shadow::before,
+.shadow::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background: linear-gradient(45deg, red, blue, green, yellow, #e11d74, black, #ffff00, #aa0000);
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: animate 25s linear infinite;
+}
+
+.shadow::after {
+  filter: blur(25px);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+.high_score {
+  background-color: #0f0f0f;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: yellow;
+  font-size: 25px;
+  visibility: hidden;
+}
+
+.game {
+  position: relative;
+  width: 600px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.game_wrapper {
+  padding: 40px;
+  background-color: #817e7ebb;
+  text-align: center;
+
+}
+
+.score {
+  position: absolute;
+  float: right;
+  top: 1vmin;
+  font-size: .8rem;
+}
+
+.start-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gameover-message {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: .8rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gameover-message p {
+  letter-spacing: .5em;
+}
+
+.gameover-message span {
+  font-size: .6rem;
+  text-transform: none;
+}
+
+.ground {
+  --left: 0;
+  width: 300%;
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--left) * 1%);
+}
+
+.dino {
+  --bottom: 0;
+  height: 60%;
+  position: absolute;
+  left: 1%;
+  bottom: calc(var(--bottom) * 1%);
+}
+
+.cactus {
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--left) * 1%);
+}
+
+.hide {
+  display: none;
+}
