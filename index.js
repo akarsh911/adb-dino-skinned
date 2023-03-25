@@ -4,6 +4,7 @@ app.use(express.static('public'))
 app.use('/static', express.static('public'));
 var login = require('./login_router.js')
 app.get("/", function (req, res) {
+   console.log(req);
    res.sendFile('index.html', { root: __dirname });
 })
 

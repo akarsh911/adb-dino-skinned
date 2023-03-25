@@ -54,6 +54,11 @@ function updateSpeedScale(delta) {
 function updateScore(delta) {
   score += delta * 0.01;
   scoreDisplay.textContent = Math.floor(score) + " High Score " + Math.floor(localStorage.getItem('highscore'));
+  if((score % 100) == 0)
+  {
+    var audio = new Audio('/assets/100.mp3');
+    audio.play();
+  }
 }
 
 /* collision conditions */
@@ -164,6 +169,7 @@ function setDinoLose() {
     var audio = new Audio('/assets/high.wav');
     audio.play();
     setTimeout(() => {
+      document.removeEventListener("keydown", onJump);
       document.addEventListener("keydown", high_score_disable, { once: true }); /* prevents accidental click */
     }, 1000);
   }
@@ -173,6 +179,7 @@ function setDinoLose() {
     var audio = new Audio('/assets/high.wav');
     audio.play();
     setTimeout(() => {
+      document.removeEventListener("keydown", onJump);
       document.addEventListener("keydown", high_score_disable, { once: true }); /* prevents accidental click */
     }, 1000);
   }
@@ -266,8 +273,5 @@ function high_score_enable() {
   document.getElementById('high').style.visibility = "visible";
 }
 function high_score_disable() {
-
   document.getElementById('high').style.visibility = "hidden";
-  startGame();
-
 }
