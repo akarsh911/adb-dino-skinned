@@ -15,7 +15,6 @@ app.post('/git-webhook', (req, res) => {
    const { ref } = req.body;
    if (ref === 'refs/heads/main' || ref === 'refs/heads/master') {
       const { repository, secret } = req.body;
-      if (secret === SECRET_TOKEN) {
          const { name, clone_url } = repository;
          console.log(`Updating ${name} repository`);
          const git = spawn('git', ['pull'], { cwd: `${REPO_PATH}/${name}` });
@@ -29,9 +28,6 @@ app.post('/git-webhook', (req, res) => {
             console.log(`child process exited with code ${code}`);
          });
          res.sendStatus(200);
-      } else {
-         res.sendStatus(401);
-      }
    } else {
       res.sendStatus(200);
    }
