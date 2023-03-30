@@ -13,6 +13,7 @@ const REPO_PATH = 'D:\NodeServer';
 app.use(express.json());
 
 app.post('/git-webhook', (req, res) => {
+   console.log("Git init");
    const { ref } = req.body;
    if (ref === 'refs/heads/main' || ref === 'refs/heads/master') {
       const { repository, secret } = req.body;
