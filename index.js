@@ -2,7 +2,6 @@ var express = require('express')
 var app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
-var login = require('./sync_router.js')
 app.get("/", function (req, res) {
    res.sendFile('index.html')
 })
@@ -27,10 +26,10 @@ app.post('/git-webhook', (req, res) => {
          return;
       }
       console.log(`stdout: ${stdout}`);
-    });
+   });
 
-      res.sendStatus(200);
-  
+   res.sendStatus(200);
+
 });
 app.listen(80, '0.0.0.0')
 
