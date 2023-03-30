@@ -4,6 +4,7 @@ app.use(express.static('public'))
 app.use('/static', express.static('public'));
 var login = require('./sync_router.js')
 app.get("/", function (req, res) {
+   res.sendFile('index.html')
    console.log(req);
 })
 const SECRET_TOKEN = 'sbYjxt2v97';
