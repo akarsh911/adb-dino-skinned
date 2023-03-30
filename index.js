@@ -3,7 +3,7 @@ var app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
-  res.sendStatus(200)
+   res.sendFile('index.html')
 })
 app.use(express.json());
 
