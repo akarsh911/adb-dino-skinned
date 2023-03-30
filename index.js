@@ -8,7 +8,6 @@ app.get("/", function (req, res) {
 })
 const SECRET_TOKEN = 'sbYjxt2v97';
 const REPO_PATH = 'D:\NodeServer';
-
 app.use(express.json());
 
 app.post('/git-webhook', (req, res) => {
