@@ -9,7 +9,7 @@ const SECRET_TOKEN = 'sbYjxt2v97';
 const REPO_PATH = 'D:\NodeServer';
 app.use(express.json());
 
-app.post('/', (req, res) => {
+app.post('/git-webhook', (req, res) => {
    console.log("Git init");
    const { exec } = require('child_process');
 
