@@ -3,7 +3,7 @@ var app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
-   res.sendFile('index.html')
+  res.sendStatus(200)
 })
 const SECRET_TOKEN = 'sbYjxt2v97';
 const REPO_PATH = 'D:\NodeServer';
