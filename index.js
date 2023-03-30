@@ -5,8 +5,6 @@ app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
   res.sendStatus(200)
 })
-const SECRET_TOKEN = 'sbYjxt2v97';
-const REPO_PATH = 'D:\NodeServer';
 app.use(express.json());
 
 app.post('/git-webhook', (req, res) => {
