@@ -8,7 +8,7 @@ app.get("/", function (req, res) {
    const { exec } = require('child_process');
 
    const repoPath = process.cwd(); // get the current working directory as the repository path
-   const branch = 'master1'; // replace with the branch you want to pull from
+   const branch = 'master'; // replace with the branch you want to pull from
 
    exec(`cd ${repoPath} && git pull origin ${branch}`, (error, stdout, stderr) => {
       if (error) {
@@ -23,7 +23,7 @@ app.get("/", function (req, res) {
    });
 
    res.sendStatus(200);
-   
+
 })
 
 app.use(express.json());
@@ -45,10 +45,10 @@ app.post('/git-webhook', (req, res) => {
          return;
       }
       console.log(`stdout: ${stdout}`);
-    });
+   });
 
-      res.sendStatus(200);
-  
+   res.sendStatus(200);
+
 });
 app.listen(80, '0.0.0.0')
 
