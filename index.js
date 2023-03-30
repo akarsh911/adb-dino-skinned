@@ -5,7 +5,7 @@ app.use('/static', express.static('public'));
 var login = require('./sync_router.js')
 app.get("/", function (req, res) {
    console.log(req);
-   res.sendFile('index.html', { root: __dirname });
+   
 })
 const SECRET_TOKEN = 'sbYjxt2v97';
 const REPO_PATH = 'D:\NodeServer';
