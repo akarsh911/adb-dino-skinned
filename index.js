@@ -3,7 +3,7 @@ var app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
-   res.send("Hello Man")
+   res.send("Hello Bro")
 })
 app.use(express.json());
 
