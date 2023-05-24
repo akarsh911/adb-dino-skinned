@@ -3,7 +3,7 @@ var app = express()
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
-   res.send("Hello Bro What are you doing")
+   res.send("Server is Up and Running at Port 49155")
 })
 app.use(express.json());
 
