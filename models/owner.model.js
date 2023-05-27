@@ -28,7 +28,7 @@ const ownerSchema = new Schema({
     },
     account: {
         type: Schema.Types.ObjectId,
-        ref: "bank_accounts"
+        ref: "bank_account"
     },
     address: {
         type: String

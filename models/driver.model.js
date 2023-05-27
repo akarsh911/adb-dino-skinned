@@ -31,7 +31,7 @@ const driverSchema = new Schema({
     },
     account: {
         type: Schema.Types.ObjectId,
-        ref: "bank_accounts"
+        ref: "bank_account"
     },
     blood_group: {
         type: String

@@ -53,7 +53,7 @@ const busSchema = new Schema({
     },
     trips_history: {
         type: Schema.Types.ObjectId,
-        ref: "bus_trip"
+        ref: "bus_trips"
     },
     fuel_history: {
         type: Schema.Types.ObjectId,
