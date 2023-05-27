@@ -54,4 +54,4 @@ userTripSchema.virtual("url").get(function () {
     return `/users/trips/${this._id}`;
 });
 
-module.exports = mongoose.Model("user_trips", userTripSchema);
+module.exports = mongoose.model("user_trips", userTripSchema);

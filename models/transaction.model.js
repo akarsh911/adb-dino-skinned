@@ -28,4 +28,4 @@ transactionSchema.virtual("url").get(function () {
     return `/accounts/banks/${this._id}`;
 });
 
-module.exports = mongoose.Model("bank_account", transactionSchema);
+module.exports = mongoose.model("bank_account", transactionSchema);

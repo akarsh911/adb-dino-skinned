@@ -52,4 +52,4 @@ ownerSchema.virtual("url").get(function () {
     return `/owners/${this._id}`;
 });
 
-module.exports = mongoose.Model("owner", ownerSchema);
+module.exports = mongoose.model("owner", ownerSchema);

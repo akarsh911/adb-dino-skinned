@@ -43,4 +43,4 @@ routeSchema.virtual("url").get(function () {
     return `/routes/${this._id}`;
 });
 
-module.exports = mongoose.Model("route", routeSchema);
+module.exports = mongoose.model("route", routeSchema);

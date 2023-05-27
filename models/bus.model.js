@@ -70,4 +70,4 @@ busSchema.virtual("url").get(function () {
     return `/buses/${this._id}`;
 });
 
-module.exports = mongoose.Model("bus", busSchema);
+module.exports = mongoose.model("bus", busSchema);

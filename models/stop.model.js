@@ -27,4 +27,4 @@ stopSchema.virtual("url").get(function () {
     return `/stops/${this._id}`;
 });
 
-module.exports = mongoose.Model("", stopSchema);
+module.exports = mongoose.model("", stopSchema);

@@ -68,4 +68,4 @@ driverSchema.virtual("url").get(function () {
     return `/drivers/${this._id}`;
 });
 
-module.exports = mongoose.Model("driver", driverSchema);
+module.exports = mongoose.model("driver", driverSchema);

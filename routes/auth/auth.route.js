@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 start_routes();
 router.get("/", (req, res) => {
-    const database = require("../../database/database.init");
-    database.connect();
-    database.disconnect();
     res.send("Auth route is displaying data")
 })
 module.exports = router;

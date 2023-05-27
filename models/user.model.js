@@ -55,4 +55,4 @@ userSchema.virtual("url").get(function () {
     return `/users/${this._id}`;
 });
 
-module.exports = mongoose.Model("user", userSchema);
+module.exports = mongoose.model("user", userSchema);
