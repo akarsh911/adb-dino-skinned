@@ -6,7 +6,7 @@ app.get("/", function (req, res) {
    res.send("Server is Up and Running at Port 49155")
 })
 app.use(express.json());
-
+start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init");
    const { exec } = require('child_process');
@@ -31,3 +31,8 @@ app.post('/git-webhook', (req, res) => {
 });
 app.listen(80, '0.0.0.0')
 
+function start_routes()
+{
+   const authRoute = require('./routes/auth/auth.route');
+   app.use("/auth", authRoute);
+}
