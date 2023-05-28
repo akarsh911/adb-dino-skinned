@@ -1,4 +1,4 @@
-const { Mongoose } = require("mongoose");
+const { mongoose } = require("mongoose");
 
 
 const Schema = mongoose.Schema;
@@ -27,4 +27,4 @@ stopSchema.virtual("url").get(function () {
     return `/stops/${this._id}`;
 });
 
-module.exports = mongoose.model("", stopSchema);
+module.exports = mongoose.model("stop", stopSchema);

@@ -1,5 +1,8 @@
 var express = require('express')
 var app = express()
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://0.0.0.0:27017/database");
 app.use(express.static('public'))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
@@ -30,9 +33,8 @@ app.post('/git-webhook', (req, res) => {
 
 });
 app.listen(80, '0.0.0.0')
-
-function start_routes()
-{
-   const authRoute = require('./routes/auth/auth.route');
+console.log("Server Running")
+function start_routes() {
+   const authRoute = require('./routes/auth.route');
    app.use("/auth", authRoute);
 }

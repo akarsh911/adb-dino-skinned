@@ -35,11 +35,11 @@ const ownerSchema = new Schema({
     },
     bus_owned: {
         type: Schema.Types.ObjectId,
-        ref:"bus"
+        ref: "bus"
     },
-   
+
 });
-userSchema.virtual("name").get(function () {
+ownerSchema.virtual("name").get(function () {
     let fullname = "";
     if (this.f_name && this.l_name) {
         fullname = `${this.f_name}, ${this.l_name}`;
