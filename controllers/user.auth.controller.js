@@ -10,28 +10,27 @@ exports.login_get = asyncHandeler(async (req, res) => {
     res.send("this is a handelled login route");
 });
 exports.login_post = asyncHandeler(async (req, res) => {
-   var login=require("../middlewares/user.login");
-   var resp=await login.attempt(req.params.username,req.params.pwd_hash);
-   if(resp)
-   {
-    var uuid=uuidv4();
-     var account=require("../models/login.accounts.model");
-     var login_account=new account(
-        {
-            user_id:resp,
-            session_id:uuid,
-            status:1
-        }
-     )
-     login_account.save();
-     res.send(login_account);
-     return;
-   }
-   else{
-       console.log(resp);
-       res.send(resp)
-       return;
-   }
+    var login = require("../middlewares/user.login");
+    var resp = await login.attempt(req.params.username, req.params.password);
+    if (resp) {
+        var uuid = uuidv4();
+        var account = require("../models/login.accounts.model");
+        var login_account = new account(
+            {
+                user_id: resp,
+                session_id: uuid,
+                status: 1
+            }
+        )
+        login_account.save();
+        res.send(login_account);
+        return;
+    }
+    else {
+        console.log(resp);
+        res.send(resp)
+        return;
+    }
 });
 exports.register_get = asyncHandeler(async (req, res) => {
     res.send("this is a GET route on register...  Please Use a POST route ")
