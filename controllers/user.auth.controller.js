@@ -41,6 +41,7 @@ exports.register_get = asyncHandeler(async (req, res) => {
 exports.register_post = asyncHandeler(async (req, res) => {
     const validator = require("../middlewares/user.validation");
     var params = req.params;
+    console.log(req.params);
     var User = new user(
         {
             f_name: params.f_name,
