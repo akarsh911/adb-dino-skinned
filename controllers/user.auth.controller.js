@@ -11,28 +11,27 @@ exports.login_get = asyncHandeler(async (req, res) => {
 });
 exports.login_post = asyncHandeler(async (req, res) => {
     console.log("A user tried to login");
-   var login=require("../middlewares/user.login");
-   var resp=await login.attempt(req.params.username,req.params.password);
-   if(resp)
-   {
-    var uuid=uuidv4();
-     var account=require("../models/login.accounts.model");
-     var login_account=new account(
-        {
-            user_id:resp,
-            session_id:uuid,
-            status:1
-        }
-     )
-     login_account.save();
-     res.send(login_account);
-     return;
-   }
-   else{
-       console.log(resp);
-       res.send(resp)
-       return;
-   }
+    var login = require("../middlewares/user.login");
+    var resp = await login.attempt(req.params.username, req.params.password);
+    if (resp) {
+        var uuid = uuidv4();
+        var account = require("../models/login.accounts.model");
+        var login_account = new account(
+            {
+                user_id: resp,
+                session_id: uuid,
+                status: 1
+            }
+        )
+        login_account.save();
+        res.send(login_account);
+        return;
+    }
+    else {
+        console.log(resp);
+        res.send(resp)
+        return;
+    }
 });
 exports.register_get = asyncHandeler(async (req, res) => {
     res.send("this is a GET route on register...  Please Use a POST route ")
@@ -41,6 +40,10 @@ exports.register_get = asyncHandeler(async (req, res) => {
 exports.register_post = asyncHandeler(async (req, res) => {
     const validator = require("../middlewares/user.validation");
     var params = req.params;
+    console.log(req);
+    if (req.params.pwd_hash == "") {
+        req.params.pwd_hash = "nopass";
+    }
     console.log(req.params);
     var User = new user(
         {
