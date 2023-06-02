@@ -52,7 +52,6 @@ exports.register_get = asyncHandeler(async (req, res) => {
 exports.register_post = asyncHandeler(async (req, res) => {
     const validator = require("../middlewares/user.validation");
     var body = req.body;
-    console.log(req);
     if (req.body.pwd_hash == "") {
         req.body.pwd_hash = "nopass";
     }
@@ -73,6 +72,7 @@ exports.register_post = asyncHandeler(async (req, res) => {
 
         }
     );
+    console.log(User);
     var valid = await validator.validate_new_registration(User);
     if (valid == true) {
         await User.save();
