@@ -26,6 +26,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
             }
         )
         login_account.save();
+        console.log(login_account);
         res.send(login_account);
         return;
     }
