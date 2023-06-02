@@ -32,11 +32,9 @@ exports.verify= async(sid,uid)=>{
         console.log(uid)
         var user_account = await user.findOne({ _id: uid });
         
-        console.log(JSON.stringify(user_account))
         if (user_account)
         {
-            user_account.$unset({field : 3});
-             delete user_account.pwd_hash;
+             user_account.pwd_hash=undefined;
              console.log(user_account)
              return user_account;
         }
