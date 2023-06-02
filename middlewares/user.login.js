@@ -31,7 +31,7 @@ exports.verify= async(sid,uid)=>{
     if (await account.exists({ user_id: uid, session_id: sid, status:1})) {
         console.log(uid)
         var user_account = await user.findOne({ _id: uid });
-        user_account=JSON.parse(user_account);
+        user_account=user_account.toObject;
         console.log(user_account)
         if (user_account)
         {
