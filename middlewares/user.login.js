@@ -31,8 +31,8 @@ exports.verify= async(sid,uid)=>{
     if (await account.exists({ user_id: uid, session_id: sid, status:1})) {
         console.log(uid)
         var user_account = await user.findOne({ _id: uid });
-        user_account=user_account.toObject;
-        console.log(user_account)
+        
+        console.log(JSON.stringify(user_account))
         if (user_account)
         {
              delete user_account.pwd_hash;
