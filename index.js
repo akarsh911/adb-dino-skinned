@@ -8,6 +8,9 @@ app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
    res.send("Server is Up and Running at Port 49155")
 })
+app.post("/", function (req, res) {
+   res.send(req.params);
+})
 app.use(express.json());
 start_routes();
 app.post('/git-webhook', (req, res) => {
