@@ -13,15 +13,15 @@ exports.login_post = asyncHandeler(async (req, res) => {
     console.log(req.body.username);
     console.log("A user tried to login");
     var login = require("../middlewares/user.login");
-    console.log(req.params)
-    var resp = await login.attempt(req.params.username, req.params.password);
-    if(!req.params)
-    return res.send("NO PARAMS PASSED")
+    console.log(req.body)
+    var resp = await login.attempt(req.body.username, req.body.password);
+    if(!req.body)
+    return res.send("NO body PASSED")
 
-  if(!req.params.username)
+  if(!req.body.username)
     return res.send("No username")
 
-  if(req.params.username === ""){
+  if(req.body.username === ""){
     res.send("ADDRESS LINE EMPTY.")
   } 
     
@@ -51,21 +51,21 @@ exports.register_get = asyncHandeler(async (req, res) => {
 });
 exports.register_post = asyncHandeler(async (req, res) => {
     const validator = require("../middlewares/user.validation");
-    var params = req.params;
+    var body = req.body;
     console.log(req);
-    if (req.params.pwd_hash == "") {
-        req.params.pwd_hash = "nopass";
+    if (req.body.pwd_hash == "") {
+        req.body.pwd_hash = "nopass";
     }
-    console.log(req.params);
+    console.log(req.body);
     var User = new user(
         {
-            f_name: params.f_name,
-            l_name: params.l_name,
-            email: params.email,
-            ph_no: params.ph_no,
-            dob: params.dob,
+            f_name: body.f_name,
+            l_name: body.l_name,
+            email: body.email,
+            ph_no: body.ph_no,
+            dob: body.dob,
             avatar_url: "/images/avatar.png",
-            pwd_hash: md5(params.pwd_hash),
+            pwd_hash: md5(body.pwd_hash),
             rating: 0,
             balance: 0,
             trip_count: 0,
