@@ -81,8 +81,9 @@ exports.register_post = asyncHandeler(async (req, res) => {
 
 exports.verify_post=asyncHandeler(async(req,res)=>{
     const login=require("../middlewares/user.login");
-    var res;
-    if(res=await login.verify(req.body.session_id,req.body.user_id))
+    var resp;
+    
+    if(resp=await login.verify(req.body.session_id,req.body.user_id))
     {
         console.log("Verified already logged in account");
     }
@@ -90,5 +91,6 @@ exports.verify_post=asyncHandeler(async(req,res)=>{
     {
         console.log("failed to verify already logged in account" + res);
     }
-    return res;
+    res.send(resp)
+    
 });
