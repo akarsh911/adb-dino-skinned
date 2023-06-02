@@ -8,8 +8,7 @@ exports.attempt = async (username, password) => {
         return false;
     }
     if (await user.exists({
-        $or: [{ email: username, pwd_hash: md5(password) }
-            , { ph_no: username, pwd_hash: md5(password) }]
+        email: username, pwd_hash: md5(password)
     })) {
         var uid = await user.findOne({
              email: username, pwd_hash: md5(password)               
