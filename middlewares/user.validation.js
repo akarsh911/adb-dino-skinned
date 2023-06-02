@@ -1,6 +1,6 @@
 const user = require("../models/user.model");
 exports.validate_new_registration = async (User) => {
-    var regName = (/^[A-Za-z]+$/);
+    var regName = /^[A-Za-z]+$/;
    
     if (!regName.test(User.f_name)) {
         return 'Invalid first name.';
