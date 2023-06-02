@@ -15,6 +15,7 @@ router.get("/login/user", user.login_get);
 router.post("/login/user", user.login_post);
 router.post("/register/user",user.register_post);
 router.get("/register/user",user.register_get);     
+router.post("/verify/user",user.verify_post);
 const driver = require("../controllers/driver.auth.controller");
 router.get("/login/driver", driver.login_get);
 const owner = require("../controllers/owner.auth.controller");
