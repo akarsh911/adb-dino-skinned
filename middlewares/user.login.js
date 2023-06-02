@@ -31,12 +31,13 @@ exports.verify= async(sid,uid)=>{
     if (await account.exists({ user_id: uid, session_id: sid, status:1})) {
         console.log("account found")
         var user_account = await user.findOne({ user_id: uid });
-       
         if (user_account)
         {
-            delete user_account.pwd_hash;
+             delete user_account.pwd_hash;
              console.log(user_account)
-            return user_account;}
+             return user_account;
+        }
+        
         else
             return false;
     }
