@@ -7,11 +7,14 @@ exports.attempt = async (username, password) => {
         console.log("Username or Password was empty");
         return false;
     }
+    console.log(md5(password));
     if (await user.exists({
-        email: username, pwd_hash: md5(password)
+        $or: [{ email: username, pwd_hash: md5(password) }
+            , { ph_no: username, pwd_hash: md5(password) }]
     })) {
         var uid = await user.findOne({
-             email: username, pwd_hash: md5(password)               
+            $or: [{ email: username, pwd_hash: md5(password) }
+                , { ph_no: username, pwd_hash: md5(password) }]
         });
         if (uid)
             return uid;
