@@ -14,7 +14,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
     var login = require("../middlewares/user.login");
     console.log(req.body)
     var resp = await login.attempt(req.body.username, req.body.password);
-       
+
     if (resp) {
         var uuid = uuidv4();
         var account = require("../models/login.accounts.model");
@@ -25,7 +25,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
                 status: 1
             }
         )
-        account.findOneAndDelete({user_id:resp});
+        await account.deleteMany({ user_id: resp });
         login_account.save();
         console.log(login_account);
         res.send(login_account);
