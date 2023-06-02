@@ -10,6 +10,7 @@ exports.login_get = asyncHandeler(async (req, res) => {
     res.send("this is a handelled login route");
 });
 exports.login_post = asyncHandeler(async (req, res) => {
+    console.log(req.body.username);
     console.log("A user tried to login");
     var login = require("../middlewares/user.login");
     console.log(req.params)
