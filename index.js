@@ -4,7 +4,8 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://0.0.0.0:27017/database");
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
    res.send("Server is Up and Running at Port 49155")
@@ -12,7 +13,6 @@ app.get("/", function (req, res) {
 app.post("/", function (req, res) {
    res.send(req.params);
 })
-app.use(express.json());
 start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init");
