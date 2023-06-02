@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/", (req, res) => {
+router.post("/", (req, res) => {
     res.send("Auth route is displaying data")
     console.log(req.params);
 });
