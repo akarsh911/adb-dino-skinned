@@ -23,7 +23,7 @@ exports.attempt = async (username, password) => {
     else {
         console.log("User not in database");
         return false
-    }
+    } 
 }
 
 exports.verify= async(session_id,user_id)=>{
