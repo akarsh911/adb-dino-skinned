@@ -34,7 +34,7 @@ function ValidateEmail(mail) {
 }
 function ValidatePhoneNumber(inputtxt) {
     var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if (inputtxt.value.match(phoneno)) {
+    if (phoneno.test(inputtxt)) {
         return true;
     }
     else {
