@@ -35,6 +35,7 @@ exports.verify= async(sid,uid)=>{
         console.log(JSON.stringify(user_account))
         if (user_account)
         {
+            user_account.$unset({pwd_hash});
              delete user_account.pwd_hash;
              console.log(user_account)
              return user_account;
