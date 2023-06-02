@@ -28,7 +28,7 @@ exports.attempt = async (username, password) => {
 }
 
 exports.verify= async(sid,uid)=>{
-    console.log(await account.findOne({session_id:sid}))
+    console.log(await account.findOne({session_id:sid,user_id:uid}))
     if (await account.exists({ user_id: uid, session_id: sid, status:1})) {
         console.log("account found")
         var user_account = await user.findOne({ user_id: uid, session_id: sid, status: 1 });
