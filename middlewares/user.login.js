@@ -16,7 +16,7 @@ exports.attempt = async (username, password) => {
                 , { ph_no: username, pwd_hash: md5(password) }]
         });
         if (uid)
-            return uid;
+            return uid._id;
         else
             return false;
     }
@@ -33,7 +33,7 @@ exports.verify= async(session_id,user_id)=>{
     if (await account.exists({ user_id: user_id, session_id: session_id, status:1})) {
         var user_account = await user.findOne({ user_id: user_id, session_id: session_id, status: 1 });
         if (user_account)
-            return user_account._id;
+            return user_account;
         else
             return false;
     }
