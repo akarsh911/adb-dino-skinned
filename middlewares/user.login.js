@@ -4,6 +4,7 @@ const md5 = require("md5");
 exports.attempt = async (username, password) => {
     if(!password||!username)
     {
+        console.log("Username or Password was empty");
         return false;
     }
     if (await user.exists({
@@ -20,6 +21,7 @@ exports.attempt = async (username, password) => {
             return false;
     }
     else {
+        console.log("User not in database");
         return false
     }
 }

@@ -10,21 +10,11 @@ exports.login_get = asyncHandeler(async (req, res) => {
     res.send("this is a handelled login route");
 });
 exports.login_post = asyncHandeler(async (req, res) => {
-    console.log(req.body.username);
     console.log("A user tried to login");
     var login = require("../middlewares/user.login");
     console.log(req.body)
     var resp = await login.attempt(req.body.username, req.body.password);
-    if(!req.body)
-    return res.send("NO body PASSED")
-
-  if(!req.body.username)
-    return res.send("No username")
-
-  if(req.body.username === ""){
-    res.send("ADDRESS LINE EMPTY.")
-  } 
-    
+       
     if (resp) {
         var uuid = uuidv4();
         var account = require("../models/login.accounts.model");
