@@ -12,6 +12,7 @@ exports.login_get = asyncHandeler(async (req, res) => {
 exports.login_post = asyncHandeler(async (req, res) => {
     console.log("A user tried to login");
     var login = require("../middlewares/user.login");
+    console.log(Date.now+": "+req.params.username)
     var resp = await login.attempt(req.params.username, req.params.password);
     if (resp) {
         var uuid = uuidv4();
