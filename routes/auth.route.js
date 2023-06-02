@@ -3,6 +3,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     res.send("Auth route is displaying data")
+    console.log(req.params);
 });
 
 const user = require("../controllers/user.auth.controller");
