@@ -4,9 +4,7 @@ var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://0.0.0.0:27017/database");
 app.use(express.static('public'))
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.multipart());
+app.use(express.urlencoded({ extended: true }))
 app.use('/static', express.static('public'));
 app.get("/", function (req, res) {
    res.send("Server is Up and Running at Port 49155")
