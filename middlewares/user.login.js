@@ -12,8 +12,7 @@ exports.attempt = async (username, password) => {
             , { ph_no: username, pwd_hash: md5(password) }]
     })) {
         var uid = await user.findOne({
-            $or: [{ email: username, pwd_hash: md5(password) }
-                , { ph_no: username, pwd_hash: md5(password) }]
+             email: username, pwd_hash: md5(password)               
         });
         if (uid)
             return uid;
