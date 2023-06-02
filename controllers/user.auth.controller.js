@@ -17,14 +17,12 @@ exports.login_post = asyncHandeler(async (req, res) => {
     if(!req.params)
     return res.send("NO PARAMS PASSED")
 
-  if(!req.params.address_line)
-    return res.send("NO address_line PASSED")
+  if(!req.params.username)
+    return res.send("No username")
 
-  if(req.params.address_line === ""){
+  if(req.params.username === ""){
     res.send("ADDRESS LINE EMPTY.")
-  } else {
-    res.send("ADDRESS LINE > ",req.params.address_line)
-  }
+  } 
     
     if (resp) {
         var uuid = uuidv4();
