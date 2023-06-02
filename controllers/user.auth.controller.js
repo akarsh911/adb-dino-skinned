@@ -26,7 +26,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
             }
         )
         await account.deleteMany({ user_id: resp });
-        login_account.save();
+        await login_account.save();
         console.log(login_account);
         res.send(login_account);
         return;
