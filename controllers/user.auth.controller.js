@@ -10,18 +10,10 @@ exports.login_get = asyncHandeler(async (req, res) => {
     res.send("this is a handelled login route");
 });
 exports.login_post = asyncHandeler(async (req, res) => {
-    if (!req.params)
-        return res.send("NO PARAMS PASSED")
-
-    if (!req.params.address_line)
-        return res.send("NO address_line PASSED")
-
-    if (req.params.address_line === "") {
-        res.send("ADDRESS LINE EMPTY.")
-    } else {
-        res.send("ADDRESS LINE > ", req.params.address_line)
-    }
-    
+    console.log("A user tried to login");
+    var login = require("../middlewares/user.login");
+    console.log(req.params)
+    var resp = await login.attempt(req.params.username, req.params.password);
     if(!req.params)
     return res.send("NO PARAMS PASSED")
 
@@ -33,10 +25,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
   } else {
     res.send("ADDRESS LINE > ",req.params.address_line)
   }
-    console.log("A user tried to login");
-    var login = require("../middlewares/user.login");
-    console.log(req)
-    var resp = await login.attempt(req.params.username, req.params.password);
+    
     if (resp) {
         var uuid = uuidv4();
         var account = require("../models/login.accounts.model");
