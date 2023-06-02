@@ -15,6 +15,7 @@ exports.attempt = async (username, password) => {
             $or: [{ email: username, pwd_hash: md5(password) }
                 , { ph_no: username, pwd_hash: md5(password) }]
         });
+        
         if (uid)
             return uid._id;
         else

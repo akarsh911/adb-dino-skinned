@@ -25,6 +25,7 @@ exports.login_post = asyncHandeler(async (req, res) => {
                 status: 1
             }
         )
+        account.findOneAndDelete({user_id:resp});
         login_account.save();
         console.log(login_account);
         res.send(login_account);
