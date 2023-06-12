@@ -41,4 +41,6 @@ console.log("Server Running")
 function start_routes() {
    const authRoute = require('./routes/auth.route');
    app.use("/auth", authRoute);
+   const apkRoute = require('./routes/apk.route');
+   app.use("/apk", apkRoute);
 }
