@@ -10,5 +10,4 @@ function disconnect() {
     client.close();
     console.log("DataBase Disconnecteed");
 }
-//hi h
 module.exports = { connect, disconnect };
