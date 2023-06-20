@@ -26,6 +26,7 @@ app.post('/git-webhook', (req, res) => {
          console.error(`Error: ${error.message}`);
          return;
       }
+      
       if (stderr) {
          console.error(`stderr: ${stderr}`);
          return;
