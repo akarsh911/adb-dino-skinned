@@ -21,7 +21,7 @@ app.post('/git-webhook', (req, res) => {
    const repoPath = process.cwd(); // get the current working directory as the repository path
    const branch = 'master'; // replace with the branch you want to pull from
 
-   exec(`cd ${repoPath} && git pull origin ${branch}`, (error, stdout, stderr) => {
+   exec(`cd ${repoPath} && sudo git pull origin ${branch}`, (error, stdout, stderr) => {
       if (error) {
          console.error(`Error: ${error.message}`);
          return;
