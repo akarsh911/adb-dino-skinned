@@ -3,6 +3,7 @@ var app = express()
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://0.0.0.0:27017/database");
+app.use(express.bodyParser({ limit: '50mb' }));
 app.use(express.static('static'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,7 +16,7 @@ app.post("/", function (req, res) {
 })
 start_routes();
 app.post('/git-webhook', (req, res) => {
-   console.log("Git init- "+ process.cwd());
+   console.log("Git init- " + process.cwd());
    const { exec } = require('child_process');
    exec('git pull origin master', (error, stdout, stderr) => {
       if (error) {
@@ -38,7 +39,7 @@ app.post('/git-webhook', (req, res) => {
 app.listen(80, '0.0.0.0')
 console.log("Server Running")
 function start_routes() {
-   const authRoute = require('./routes/auth.route');  
+   const authRoute = require('./routes/auth.route');
    app.use("/auth", authRoute);
    const apkRoute = require('./routes/apk.route');
    app.use("/apk", apkRoute);
