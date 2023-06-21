@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express()
-const git = require('git');
+const simpleGit = require('simple-git');
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://0.0.0.0:27017/database");
@@ -18,16 +18,20 @@ start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init- " + process.cwd());
    const repositoryPath = '/home/server/Desktop/server'; // Replace with the actual path to your repository
-
-   const repo = git(repositoryPath);
-   repo.pull('origin', 'master', (err, result) => {
+   const git = simpleGit(repositoryPath);
+   git.pull('origin', 'master', (err, update) => {
       if (err) {
          console.error(`Git pull failed: ${err}`);
          res.status(500).send('Git pull failed');
          return;
       }
 
-      console.log(`Git pull successful: ${result.summary}`);
+      if (update && update.summary.changes) {
+         console.log(`Git pull successful. Changes: ${update.summary.changes}`);
+      } else {
+         console.log('Git pull successful. No changes.');
+      }
+
       res.send('Git pull successful');
    });
 });
