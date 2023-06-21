@@ -16,25 +16,25 @@ app.post("/", function (req, res) {
 start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init");
-     // Execute git pull command
-     const { exec } = require('child_process');
-  exec('git pull origin master', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
-      res.status(500).send('Git pull failed');
-      return;
-    }
+   const { exec } = require('child_process');
+   exec('git pull origin master', (error, stdout, stderr) => {
+      if (error) {
+         console.error(`Error: ${error.message}`);
+         res.status(500).send('Git pull failed');
+         return;
+      }
 
-    if (stderr) {
-      console.error(`Git pull error: ${stderr}`);
-      res.status(500).send('Git pull failed');
-      return;
-    }
+      if (stderr) {
+         console.error(`Git pull error: ${stderr}`);
+         res.status(500).send('Git pull failed');
+         return;
+      }
 
-    console.log(`Git pull output: ${stdout}`);
-    res.send('Git pull successful');
+      console.log(`Git pull output: ${stdout}`);
+      res.send('Git pull successful');
 
-});});
+   });
+});
 app.listen(80, '0.0.0.0')
 console.log("Server Running")
 function start_routes() {
