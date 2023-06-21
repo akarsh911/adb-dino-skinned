@@ -17,23 +17,18 @@ app.post("/", function (req, res) {
 start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init- " + process.cwd());
-   const { exec } = require('child_process');
-   exec('git pull origin master', (error, stdout, stderr) => {
-      if (error) {
-         console.error(`Error: ${error.message}`);
+   const repositoryPath = '/home/server/Desktop/server'; // Replace with the actual path to your repository
+
+   const repo = git(repositoryPath);
+   repo.pull('origin', 'master', (err, result) => {
+      if (err) {
+         console.error(`Git pull failed: ${err}`);
          res.status(500).send('Git pull failed');
          return;
       }
 
-      if (stderr) {
-         console.error(`Git pull error: ${stderr}`);
-         res.status(500).send('Git pull failed');
-         return;
-      }
-
-      console.log(`Git pull output: ${stdout}`);
+      console.log(`Git pull successful: ${result.summary}`);
       res.send('Git pull successful');
-
    });
 });
 app.listen(80, '0.0.0.0')
@@ -46,3 +41,4 @@ function start_routes() {
 }
 //test github
 //tt abs test
+//s
