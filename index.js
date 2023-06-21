@@ -7,7 +7,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/database");
 app.use(express.static('static'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use('/static', express.static('static'));
+app.use('/', express.static('static'));
 app.get("/", function (req, res) {
    res.send("Server is Up and Running at Port 49155")
 })
