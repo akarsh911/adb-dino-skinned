@@ -3,7 +3,6 @@ var app = express()
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://0.0.0.0:27017/database");
-app.use(express.bodyParser({ limit: '50mb' }));
 app.use(express.static('static'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
