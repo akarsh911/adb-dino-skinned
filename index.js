@@ -17,7 +17,7 @@ start_routes();
 app.post('/git-webhook', (req, res) => {
    console.log("Git init");
    const { exec } = require('child_process');
-   exec('cd /controllers', (error, stdout, stderr) => {
+   exec('sudo git status', (error, stdout, stderr) => {
       if (error) {
          console.error(`Error: ${error.message}`);
          res.status(500).send('Git pull failed');
@@ -43,5 +43,3 @@ function start_routes() {
    const apkRoute = require('./routes/apk.route');
    app.use("/apk", apkRoute);
 }
-//test github
-//tt
