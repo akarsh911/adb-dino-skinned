@@ -15,9 +15,9 @@ app.post("/", function (req, res) {
 })
 start_routes();
 app.post('/git-webhook', (req, res) => {
-   console.log("Git init");
+   console.log("Git init- "+ process.cwd());
    const { exec } = require('child_process');
-   exec('sudo git status', (error, stdout, stderr) => {
+   exec('git pull origin master', (error, stdout, stderr) => {
       if (error) {
          console.error(`Error: ${error.message}`);
          res.status(500).send('Git pull failed');
@@ -38,7 +38,7 @@ app.post('/git-webhook', (req, res) => {
 app.listen(80, '0.0.0.0')
 console.log("Server Running")
 function start_routes() {
-   const authRoute = require('./routes/auth.route');
+   const authRoute = require('./routes/auth.route');  
    app.use("/auth", authRoute);
    const apkRoute = require('./routes/apk.route');
    app.use("/apk", apkRoute);
