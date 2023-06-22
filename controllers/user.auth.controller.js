@@ -56,7 +56,7 @@ exports.register_post = asyncHandeler(async (req, res) => {
             ph_no: body.ph_no,
             dob: body.dob,
             avatar_url: "/images/avatar.png",
-            pwd_hash: md5(body.pwd_hash),
+            pwd_hash:body.pwd_hash,
             rating: 0,
             balance: 0,
             trip_count: 0,
