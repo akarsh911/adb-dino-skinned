@@ -61,7 +61,6 @@ exports.register_post = asyncHandeler(async (req, res) => {
             balance: 0,
             trip_count: 0,
             user_type: 0
-//do not move 
         }
     );
     console.log(User);
